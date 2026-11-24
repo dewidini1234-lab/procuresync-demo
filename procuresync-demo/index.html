@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore ProcureSync, an interactive procurement portfolio demo. Follow requisitions, purchase orders, blind receiving, invoice matching and settlement across six roles.">
+  <meta name="theme-color" content="#101a36">
+  <title>ProcureSync · Interactive product demo</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="./assets/original.css">
+  <link rel="stylesheet" href="./assets/demo.css">
+  <script defer src="./assets/vendor/chart.umd.min.js"></script>
+  <script defer src="./assets/config.js"></script>
+  <script defer src="./assets/locales.js"></script>
+  <script defer src="./assets/i18n.js"></script>
+  <script defer src="./assets/model.js"></script>
+  <script defer src="./assets/views.js"></script>
+  <script defer src="./assets/app.js"></script>
+</head>
+<body>
+  <noscript><p class="panel demo-panel">Enable JavaScript to explore this interactive procurement demo.</p></noscript>
+  <a class="skip-link" href="#main-content" data-i18n="Skip to content">Skip to content</a>
+  <div id="app"></div>
+  <div id="toast" class="demo-toast" role="status" aria-live="polite" hidden></div>
+  <dialog id="confirm-dialog" aria-labelledby="confirm-title">
+    <form method="dialog"><h2 id="confirm-title" data-i18n="Restart this demo?">Restart this demo?</h2><p data-i18n="Your browser’s simulated transactions will be replaced with the original sample data.">Your browser’s simulated transactions will be replaced with the original sample data.</p><div class="dialog-actions"><button class="btn btn-outline-secondary" value="cancel" data-i18n="Keep exploring">Keep exploring</button><button class="btn btn-primary" value="restart" data-i18n="Restart demo">Restart demo</button></div></form>
+  </dialog>
+</body>
+</html>
