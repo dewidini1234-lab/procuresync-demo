@@ -34,16 +34,27 @@ check('All source-derived sidebar pages render their guide in both languages',()
  }
  assert.equal(JSON.stringify(s),before);
 });
+check('Landing workflow uses existing language keys and retains the English wording',()=>{
+ T.setLocale('id');
+ const id=V.welcome();
+ for(const text of ['Ajukan permintaan pembelian','Terbitkan pesanan per pemasok','Terima dan alokasikan barang (FIFO)','Periksa, cocokkan, dan bayar'])assert(id.includes(text));
+ for(const text of ['Production or Division Manager','Create &amp; submit PR','Source vendor &amp; fixed price','Review invoice, match &amp; pay'])assert(!id.includes(text));
+ T.setLocale('en');
+ const en=V.welcome();
+ assert(en.includes('Production or Division Manager'));
+ assert(en.includes('Create &amp; submit PR'));
+ assert(en.includes('Review invoice, match &amp; pay'));
+});
 check('Menus, guide headings, unit options, status labels and buttons follow Indonesian',()=>{
  T.setLocale('id');
  const requisition=V.shell(s,'PRODUCTION','requisitions/view',1,{},null);
- assert(requisition.includes('Kirim permintaan'));assert(requisition.includes('Kotak'));
- assert(requisition.includes('Shift Pagi (07:00 - 15:00)'));
+ assert(requisition.includes('Ajukan permintaan'));assert(requisition.includes('Kotak'));
+ assert(requisition.includes('Shift Pagi (07:00–15:00)'));
  assert(!requisition.includes(' shift ('));assert(!requisition.includes('>Box<'));
  const masters=V.shell(s,'SUPER_ADMIN','admin/masters',null,{},null);
  for(const unit of ['Rim','Batang','Dus','Karung','Buah'])assert(masters.includes('>'+unit+'</option>'));
- assert.equal(V.human('MATCHED_100'),'Cocok 100%');
- assert(V.shell(s,'FINANCE','invoices/view',1,{},null).includes('Koreksi dengan tinjauan manusia'));
+ assert.equal(V.human('MATCHED_100'),'Sesuai 100%');
+ assert(V.shell(s,'FINANCE','invoices/view',1,{},null).includes('Pemeriksaan dan koreksi OCR'));
 });
 check('User-entered data identical to translation keys stays exactly as entered',()=>{
  const c=structuredClone(s);
@@ -59,8 +70,8 @@ check('Validation, notices and dynamic placeholder messages have centralized Ind
  T.setLocale('id');
  for(const message of ['The request exceeds the remaining monthly budget.','Submitted to Purchasing for vendor sourcing.','This staff member is not scheduled at the scenario time. Review the shift roster.','One transfer must equal the full approved invoice amount.','Use the demo password shown below.'])
   assert.notEqual(T.t(message),message,message);
- assert.equal(T.t('Damage decision · {item}',{item:'Box'}),'Keputusan kerusakan · Box');
- assert.equal(T.t('Enter a nonnegative decimal with up to 3 decimal places.'),'Masukkan desimal nonnegatif dengan maksimal 3 angka desimal.');
+ assert.equal(T.t('Damage decision · {item}',{item:'Box'}),'Penanganan barang rusak · Box');
+ assert.equal(T.t('Enter a nonnegative decimal with up to 3 decimal places.'),'Masukkan angka nol atau lebih dengan maksimal 3 angka di belakang titik desimal.');
 });
 check('Locale changes preserve all scenario data including payment and audit records',()=>{
  const original=JSON.stringify(s);
