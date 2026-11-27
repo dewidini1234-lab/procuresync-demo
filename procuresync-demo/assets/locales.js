@@ -1,6 +1,7 @@
 /* Central English-to-Indonesian presentation catalog. Reuses the original application terminology. */
 window.DEMO_LOCALES = {
   "id": {
+    "Created by": "Dibuat oleh",
     "Part": "Bagian",
     "3-way matching verification": "Verifikasi pesanan, penerimaan, dan tagihan",
     "Active staff member": "Staf yang bertugas",

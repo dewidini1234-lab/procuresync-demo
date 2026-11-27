@@ -60,6 +60,9 @@ h1,h2,h3,h4 { line-height:1.25; }
 .hero-copy h1 em { color:var(--blue); font-style:normal; }
 .hero-copy>p { max-width:440px; font-size:1rem; line-height:1.85; color:#6c7890; margin-bottom:30px; }
 .hero-copy>small { display:block; margin-top:17px; color:#8890a3; font-size:.75rem; }
+.creator-credit { display:flex; flex-direction:column; gap:4px; margin-bottom:24px; }
+.creator-credit span { color:#6c7890; font-size:.875rem; }
+.creator-credit strong { color:var(--nav); font-size:1rem; font-weight:600; overflow-wrap:anywhere; }
 .hero-product { overflow:hidden; border:1px solid #dce1f4; border-radius:15px; box-shadow:0 28px 75px #243d7b15,0 5px 16px #243d7b07; background:var(--surface); transform:perspective(1600px) rotateY(-3deg); }
 .preview-bar { display:flex; align-items:center; padding:15px 20px; gap:10px; background:#fff; border-bottom:1px solid var(--border); font-size:.875rem; }
 .mini-brand { display:grid; place-items:center; width:28px; height:28px; color:white; border-radius:8px; font-weight:750; background:var(--blue); }
